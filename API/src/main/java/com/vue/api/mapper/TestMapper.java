@@ -8,8 +8,8 @@ import com.vue.api.vo.TestVo;
 @Mapper
 public interface TestMapper {
 
-	@Select(" SELECT 'GOOD JOB ~!' AS TEST_VALUE "
-			+ " FROM DUAL ")
+	@Select(" SELECT 'GOOD JOB2 ~!' AS TEST_VALUE\r\n" + 
+			"  FROM DUAL ")
 	TestVo getTestValue();
 
 	
