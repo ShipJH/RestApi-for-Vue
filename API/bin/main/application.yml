@@ -7,13 +7,11 @@
 spring:
    datasource:
       driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-      url: jdbc:log4jdbc:oracle:thin:@lisanstudy.cjb2viqvjmpg.us-east-2.rds.amazonaws.com:1521:orcl
-      username: LisanStudy
-      password: 1san1san
+      url: jdbc:oracle:thin:@hyun.cmroitrkdtra.ap-northeast-2.rds.amazonaws.com:1521:ORCL
+      username: hyun
+      password: hyun1234
       
 
 mybatis:
     configuration:
         map-underscore-to-camel-case: true
-
-        
