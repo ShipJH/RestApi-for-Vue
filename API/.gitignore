@@ -3,6 +3,7 @@
 !gradle/wrapper/gradle-wrapper.jar
 
 ### my ignore ###
+API/bin/
 *.class
 /bin/
 
