@@ -14,6 +14,10 @@ import com.vue.api.responseVo.ReqTestVo;
 import com.vue.api.service.TestService;
 import com.vue.api.vo.TestVo;
 
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
+
 
 @RestController
 public class test {
@@ -22,7 +26,11 @@ public class test {
 	private TestService testService;
 	
 	@CrossOrigin
-	@GetMapping(value="/test")
+	@ApiOperation(value = "스웨거 테스트")		//이 Api 매서드 설명
+/*    @ApiImplicitParams({					//파라미터 이름과 설명 적용
+            @ApiImplicitParam(),			//@PathVariable 파리미터는 반드시 parameterType="path"로 설정하고 
+    })									//@RequestParam 파라미터는 parameterType="string"으로 설정해야 한다.
+*/	@GetMapping(value="/test")
 	public ResponseEntity<TestVo> testm(){
 		
 		TestVo vo = testService.getTest();
