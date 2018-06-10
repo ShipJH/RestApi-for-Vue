@@ -47,6 +47,13 @@ dependencies {
 	// log4jdbc
 	compile group: 'org.bgee.log4jdbc-log4j2', name: 'log4jdbc-log4j2-jdbc4.1', version: '1.16'
 
+	// https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui
+	compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.7.0'
+	
+	// https://mvnrepository.com/artifact/io.springfox/springfox-swagger2
+	compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.7.0'
+	
+
 }
 
 //소스를 컴파일하고 빌드 완료된 프로그램을 실행할 때 사용할 자바버전을 선언

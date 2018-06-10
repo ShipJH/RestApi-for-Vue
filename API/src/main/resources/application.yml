@@ -23,3 +23,10 @@ spring:
 mybatis:
     configuration:
         map-underscore-to-camel-case: true
+        
+#spring:
+#   datasource:
+#        driver-class-name: 
+#        url: jdbc:mysql://35.200.101.90:3306/hyun
+#        username: hyun
+#        password: hyun1234
