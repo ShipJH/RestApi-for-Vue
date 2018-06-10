@@ -12,21 +12,21 @@
 #      username: LisanStudy
 #      password: 1san1san
 
-spring:
-   datasource:
-      driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-      url: jdbc:log4jdbc:oracle:thin:@hyun.cmroitrkdtra.ap-northeast-2.rds.amazonaws.com:1521:ORCL
-      username: hyun
-      password: hyun1234
+#spring:
+#   datasource:
+#      driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+#      url: jdbc:log4jdbc:oracle:thin:@hyun.cmroitrkdtra.ap-northeast-2.rds.amazonaws.com:1521:ORCL
+#      username: hyun
+#      password: hyun1234
       
 
 mybatis:
     configuration:
         map-underscore-to-camel-case: true
         
-#spring:
-#   datasource:
-#        driver-class-name: 
-#        url: jdbc:mysql://35.200.101.90:3306/hyun
-#        username: hyun
-#        password: hyun1234
+spring:
+   datasource:
+        driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+        url: jdbc:log4jdbc:mysql://35.200.101.90:3306/hyun
+        username: hyun
+        password: hyun1234
