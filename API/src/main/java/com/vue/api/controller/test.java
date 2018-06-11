@@ -10,16 +10,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.vue.api.responseVo.ReqTestVo;
 import com.vue.api.service.TestService;
 import com.vue.api.vo.TestVo;
 
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 
 @RestController
+@Api(tags = "테스트컨트롤러", value = "테스트컨트롤러", description = "테스트컨트롤러 관련 API")
 public class test {
 
 	@Autowired
