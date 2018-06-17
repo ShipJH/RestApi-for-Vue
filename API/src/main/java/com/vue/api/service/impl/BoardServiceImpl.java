@@ -19,12 +19,4 @@ public class BoardServiceImpl implements BoardService{
 	public List<BoardVo> findByBoardList() {
 		return boardMapper.findByBoardList();
 	}
-	
-//	@Override
-//	public TestVo getTest() {
-//		 
-//		return testMapper.getTestValue();
-//	}
-
-	
 }

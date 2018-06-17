@@ -1,5 +1,6 @@
 package com.vue.api.response;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import lombok.Data;
@@ -7,12 +8,13 @@ import lombok.Data;
 @Data
 public class Res4010 {
 	
-	/** 게시글 번호 */
-	private int boardNo;
+	private List<Res4010List> boardList;
+	
+	public void addList(Res4010List res4010List) {
+		if(boardList == null) {
+			boardList = new ArrayList<>();
+		}
+		boardList.add(res4010List);
+	}
 
-	/** 게시판 제목 */
-	private String title;
-
-	/** 게시판 상태 : Y-활성, N-비활성(삭제) */
-	private String useYn;
 }

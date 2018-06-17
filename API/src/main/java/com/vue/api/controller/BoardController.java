@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vue.api.response.Res4010;
+import com.vue.api.response.Res4010List;
 import com.vue.api.response.Res4020;
 import com.vue.api.service.BoardService;
 import com.vue.api.service.BoardService1;
@@ -34,22 +35,22 @@ public class BoardController {
 	private BoardService1 boardService1;
 	
 	
-	@ApiOperation(value = "게시판 목록보기")		//이 Api 매서드 설명
+	@ApiOperation(value = "게시판 목록보기")
 	@GetMapping(value="/4010")
-	public ResponseEntity<List<Res4010>> testm(){
+	public ResponseEntity<Res4010> testm(){
 		
-		List<Res4010> response = new ArrayList<>(); 
+		Res4010 response = new Res4010();
+		Res4010List res4010List = new Res4010List(); 
 		List<BoardVo> boardVo = boardService.findByBoardList();
 		
 		for(BoardVo list : boardVo) {
-			Res4010 res4010 = new Res4010(); 
-			res4010.setBoardNo(list.getBoardNo());
-			res4010.setTitle(list.getTitle());
-			res4010.setUseYn(list.getUseYn());
-			response.add(res4010);
+			res4010List.setBoardNo(list.getBoardNo());
+			res4010List.setTitle(list.getTitle());
+			res4010List.setUseYn(list.getUseYn());
+			response.addList(res4010List);
 		}
 		
-		return new ResponseEntity<List<Res4010>>(response, HttpStatus.OK);
+		return new ResponseEntity<Res4010>(response, HttpStatus.OK);
 	}
 	
 	@ApiOperation(value = "댓글 목록")
@@ -71,18 +72,4 @@ public class BoardController {
 		return new ResponseEntity<List<Res4020>>(response, HttpStatus.OK);
 	}
 	
-//	@PostMapping(value="/member-0001")
-//	public ResponseEntity<Res0001> testma(Req0001 req){
-//		String a= req.getParameter("id");
-//		System.out.println(a);
-//		String msg = "ok~~";
-//		if("z".equals(a)) {
-//			msg = "zzzzzzzzzzzzzz!!!";
-//		}else {
-//			msg = "gggggggggggggggggggggggggggggggggg";
-//		}
-//		
-//		
-//		return new ResponseEntity<String>(msg, HttpStatus.OK);
-//	}
 }
