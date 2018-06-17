@@ -24,6 +24,7 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @Api(tags = "게시판 API", value = "게시판 API", description = "게시판 API")
+@CrossOrigin
 @RequestMapping("/board")
 public class BoardController {
 
@@ -33,7 +34,6 @@ public class BoardController {
 	private BoardService1 boardService1;
 	
 	
-	@CrossOrigin
 	@ApiOperation(value = "게시판 목록보기")		//이 Api 매서드 설명
 	@GetMapping(value="/4010")
 	public ResponseEntity<List<Res4010>> testm(){
@@ -52,7 +52,6 @@ public class BoardController {
 		return new ResponseEntity<List<Res4010>>(response, HttpStatus.OK);
 	}
 	
-	@CrossOrigin
 	@ApiOperation(value = "댓글 목록")
 	@GetMapping(value="/4020")
 	public ResponseEntity<List<Res4020>> reply(){
