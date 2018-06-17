@@ -1,5 +1,8 @@
 package com.vue.api.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vue.api.response.Res4010;
-import com.vue.api.service.TestService;
+import com.vue.api.service.BoardService;
+import com.vue.api.vo.boardVo.BoardVo;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -21,15 +25,25 @@ import io.swagger.annotations.ApiOperation;
 public class BoardController {
 
 	@Autowired
-	private TestService testService;
+	private BoardService boardService;
 	
 	@CrossOrigin
 	@ApiOperation(value = "게시판 목록보기")		//이 Api 매서드 설명
 	@GetMapping(value="/4010")
-	public ResponseEntity<Res4010> testm(){
+	public ResponseEntity<List<Res4010>> testm(){
 		
+		List<Res4010> response = new ArrayList<>(); 
+		Res4010 res4010 = new Res4010(); 
+		List<BoardVo> boardVo = boardService.findByBoardList();
 		
-		return new ResponseEntity<Res4010>(new Res4010(), HttpStatus.OK);
+		for(BoardVo list : boardVo) {
+			res4010.setBoardNo(list.getBoardNo());
+			res4010.setTitle(list.getTitle());
+			res4010.setUseYn(list.getUseYn());
+			response.add(res4010);
+		}
+		
+		return new ResponseEntity<List<Res4010>>(response, HttpStatus.OK);
 	}
 	
 //	@PostMapping(value="/member-0001")
