@@ -3,7 +3,7 @@ package com.vue.api.responseVo;
 import lombok.Data;
 
 @Data
-public class ReqTestVo {
+public class ResTestVo {
 	
 	private String msg;
 	
