@@ -38,8 +38,8 @@ public class ApiApplication {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.any()) // 현재 RequestMapping으로 할당된 모든 URL 리스트를 추출
-                .paths(PathSelectors.ant("/*")) // 해당 URL들 필터링
-                /*.paths(PathSelectors.any())*/	// 모든 맵핑한걸 다잡는거같아요~!
+                /*.paths(PathSelectors.ant("/*")) // 해당 URL들 필터링*/
+                .paths(PathSelectors.any())	// 모든 맵핑한걸 다잡는거같아요~!
                 .build();
     }
     
