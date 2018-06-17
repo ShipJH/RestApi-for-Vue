@@ -1,4 +1,4 @@
-package com.vue.api.requestVo;
+package com.vue.api.request;
 
 public class ReqTestVo {
 

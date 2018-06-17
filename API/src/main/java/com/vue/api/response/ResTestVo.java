@@ -1,4 +1,4 @@
-package com.vue.api.responseVo;
+package com.vue.api.response;
 
 import lombok.Data;
 
