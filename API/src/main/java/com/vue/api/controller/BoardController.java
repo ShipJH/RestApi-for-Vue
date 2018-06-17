@@ -39,10 +39,10 @@ public class BoardController {
 	public ResponseEntity<List<Res4010>> testm(){
 		
 		List<Res4010> response = new ArrayList<>(); 
-		Res4010 res4010 = new Res4010(); 
 		List<BoardVo> boardVo = boardService.findByBoardList();
 		
 		for(BoardVo list : boardVo) {
+			Res4010 res4010 = new Res4010(); 
 			res4010.setBoardNo(list.getBoardNo());
 			res4010.setTitle(list.getTitle());
 			res4010.setUseYn(list.getUseYn());
