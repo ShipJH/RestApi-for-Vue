@@ -16,6 +16,8 @@ import com.vue.api.response.Res4010List;
 import com.vue.api.response.Res4020;
 import com.vue.api.service.BoardService;
 import com.vue.api.service.BoardService1;
+import com.vue.api.util.DateUtil;
+import com.vue.api.util.commonCode.MsgEnum;
 import com.vue.api.vo.boardVo.BoardVo;
 import com.vue.api.vo.boardVo.ReplyVo;
 
@@ -49,6 +51,10 @@ public class BoardController {
 			res4010List.setUseYn(list.getUseYn());
 			response.addList(res4010List);
 		}
+		
+		response.setResResult(MsgEnum.SUCCESS.getCode());
+		response.setResMsg(MsgEnum.SUCCESS.getMsg());
+		response.setResDate(DateUtil.toCurrentDefaultDateString());
 		
 		return new ResponseEntity<Res4010>(response, HttpStatus.OK);
 	}
