@@ -26,10 +26,7 @@ public class test {
 	
 	@CrossOrigin
 	@ApiOperation(value = "스웨거 테스트")		//이 Api 매서드 설명
-/*    @ApiImplicitParams({					//파라미터 이름과 설명 적용
-            @ApiImplicitParam(),			//@PathVariable 파리미터는 반드시 parameterType="path"로 설정하고 
-    })									//@RequestParam 파라미터는 parameterType="string"으로 설정해야 한다.
-*/	@GetMapping(value="/test")
+	@GetMapping(value="/test")
 	public ResponseEntity<TestVo> testm(){
 		
 		TestVo vo = testService.getTest();
@@ -38,8 +35,8 @@ public class test {
 	}
 	
 	
-	@PostMapping(value="/testa")
-	public ResponseEntity<String> testma(HttpServletRequest req){
+	@PostMapping(value="/member-0001")
+	public ResponseEntity<Res0001> testma(Req0001 req){
 		String a= req.getParameter("id");
 		System.out.println(a);
 		String msg = "ok~~";
