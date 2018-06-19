@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.vue.api.response.Res4010;
 import com.vue.api.response.Res4010List;
 import com.vue.api.response.Res4020;
+import com.vue.api.response.Res4020List;
 import com.vue.api.service.BoardService;
 import com.vue.api.service.BoardService1;
 import com.vue.api.util.DateUtil;
@@ -61,21 +62,22 @@ public class BoardController {
 	
 	@ApiOperation(value = "댓글 목록")
 	@GetMapping(value="/4020")
-	public ResponseEntity<List<Res4020>> reply(){
-		List<Res4020> response = new ArrayList<>(); 
+	public ResponseEntity<Res4020> reply(){
+		Res4020 response = new Res4020();
+//		Res4020List res4020List = new Res4020List();
 		List<ReplyVo> relpyVo = boardService1.findByreplyList();
 		
 		for(ReplyVo list : relpyVo) {
-			Res4020 res4020 = new Res4020();
-			res4020.setReplyNo(list.getReplyNo());
-			res4020.setBoardNo(list.getBoardNo());
-			res4020.setReplyGroup(list.getReplyGroup());
-			res4020.setContent(list.getContent());
-			res4020.setUseYn(list.getUseYn());
-			response.add(res4020);
+			Res4020List res4020List = new Res4020List();
+			res4020List.setReplyNo(list.getReplyNo());
+			res4020List.setBoardNo(list.getBoardNo());
+			res4020List.setReplyGroup(list.getReplyGroup());
+			res4020List.setContent(list.getContent());
+			res4020List.setUseYn(list.getUseYn());
+			response.addList(res4020List);
 		}
 		
-		return new ResponseEntity<List<Res4020>>(response, HttpStatus.OK);
+		return new ResponseEntity<Res4020>(response, HttpStatus.OK);
 	}
 	
 }
