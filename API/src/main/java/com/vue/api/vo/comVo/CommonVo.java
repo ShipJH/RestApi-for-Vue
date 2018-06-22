@@ -8,13 +8,13 @@ import lombok.Data;
 public class CommonVo {
 	
 	/** 등록자 */
-	private int regUser;
+	private String regUser;
 
 	/** 등록일자 */
 	private LocalDateTime regDate;
 
 	/** 수정자 */
-	private int updUser;
+	private String updUser;
 
 	/** 수정일자 */
 	private LocalDateTime updDate;

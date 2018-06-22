@@ -1,6 +1,8 @@
 package com.vue.api.util;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class DateUtil {
@@ -35,5 +37,20 @@ public class DateUtil {
      */
     public static String toDateString(Date date, String pattern) {
         return new SimpleDateFormat(pattern).format(date);
+    }
+    
+
+    /**
+     *  LocalDateTime의 변수를 받아 String인 yyyy-MM-dd HH:mm:ss 형태의 값을 넘겨준다. 
+     */
+    public static String localDateTimeToStrDetail(LocalDateTime date) {
+    	return date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+    }
+    
+    /**
+     *  LocalDateTime의 변수를 받아 String의 원하는 패턴 형태로 넘겨준다. 
+     */
+    public static String localDateTimeToStrPattern(LocalDateTime date, String pattern) {
+    	return date.format(DateTimeFormatter.ofPattern(pattern));
     }
 }

@@ -10,10 +10,17 @@ import com.vue.api.vo.boardVo.BoardVo;
 @Mapper
 public interface BoardMapper {
 
-	@Select(" SELECT BOARD_NO \n" 
-			+"	    ,TITLE   \n"  
-			+"      ,USE_YN  \n"
-			+ " FROM BOARD ")
+	@Select(" SELECT A.BOARD_NO \r\n" + 
+			"	  	,A.TITLE	\r\n" + 
+			"	  	,A.REG_DATE \r\n" + 
+			"       ,A.REG_USER \r\n" + 
+			"       ,COUNT(B.BOARD_NO) AS REPLY_CNT					\r\n" + 
+			"  FROM BOARD A LEFT OUTER JOIN REPLY B 				\r\n" + 
+			"							 ON A.BOARD_NO = B.BOARD_NO \r\n" + 
+			" GROUP BY A.BOARD_NO  \r\n" + 
+			"		  ,A.TITLE     \r\n" + 
+			"         ,A.REG_DATE  \r\n" + 
+			"         ,A.REG_USER ")
 	List<BoardVo> findByBoardList();
 
 

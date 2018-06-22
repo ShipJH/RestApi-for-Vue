@@ -24,4 +24,6 @@ public class BoardVo extends CommonVo{
 	/** 게시판 상태 : Y-활성, N-비활성(삭제) */
 	private String useYn;
 	
+	/** 답변 카운트  */
+	private int replyCnt;
 }

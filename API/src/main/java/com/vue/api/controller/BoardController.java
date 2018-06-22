@@ -1,5 +1,6 @@
 package com.vue.api.controller;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,8 @@ import com.vue.api.request.Request4020;
 import com.vue.api.response.Res4010;
 import com.vue.api.response.Res4010List;
 import com.vue.api.response.Res4020;
-import com.vue.api.service.BoardService;
 import com.vue.api.service.BoardService1;
+import com.vue.api.service.impl.BoardServiceImpl;
 import com.vue.api.util.DateUtil;
 import com.vue.api.util.commonCode.MsgEnum;
 import com.vue.api.vo.boardVo.BoardVo;
@@ -33,7 +34,7 @@ import io.swagger.annotations.ApiOperation;
 public class BoardController {
 
 	@Autowired
-	private BoardService boardService;
+	private BoardServiceImpl boardServiceImpl;
 	@Autowired
 	private BoardService1 boardService1;
 	
@@ -43,13 +44,16 @@ public class BoardController {
 	public ResponseEntity<Res4010> testm(){
 		
 		Res4010 response = new Res4010();
-		List<BoardVo> boardVo = boardService.findByBoardList();
+		List<BoardVo> boardVo = boardServiceImpl.findByBoardList();
 		
 		for(BoardVo list : boardVo) {
 			Res4010List res4010List = new Res4010List(); 
 			res4010List.setBoardNo(list.getBoardNo());
 			res4010List.setTitle(list.getTitle());
 			res4010List.setUseYn(list.getUseYn());
+			res4010List.setRegUser(list.getRegUser());
+			res4010List.setRegDate(DateUtil.localDateTimeToStrDetail(list.getRegDate()));
+			res4010List.setReplyCnt(list.getReplyCnt());
 			response.addList(res4010List);
 		}
 		
