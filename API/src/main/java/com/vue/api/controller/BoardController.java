@@ -13,15 +13,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.vue.api.request.Req4020;
 import com.vue.api.request.Request4020;
 import com.vue.api.response.Res4010;
 import com.vue.api.response.Res4010List;
 import com.vue.api.response.Res4020;
+import com.vue.api.response.Res4020List;
 import com.vue.api.service.BoardService1;
 import com.vue.api.service.impl.BoardServiceImpl;
+import com.vue.api.service.impl.BoardServiceImpl1;
 import com.vue.api.util.DateUtil;
 import com.vue.api.util.commonCode.MsgEnum;
 import com.vue.api.vo.boardVo.BoardVo;
+import com.vue.api.vo.boardVo.ReplyVo;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -36,7 +40,7 @@ public class BoardController {
 	@Autowired
 	private BoardServiceImpl boardServiceImpl;
 	@Autowired
-	private BoardService1 boardService1;
+	private BoardServiceImpl1 boardServiceImpl1;
 	
 	
 	@ApiOperation(value = "게시판 목록보기")
@@ -64,38 +68,50 @@ public class BoardController {
 		return new ResponseEntity<Res4010>(response, HttpStatus.OK);
 	}
 	
+	@ApiOperation(value = "댓글 목록")
+	@GetMapping(value="/4020")
+	public ResponseEntity<Res4020> reply(){
+		Res4020 response = new Res4020();
+//		Res4020List res4020List = new Res4020List();
+		List<ReplyVo> relpyVo = boardServiceImpl1.findByreplyList();
+		
+		for(ReplyVo list : relpyVo) {
+			Res4020List res4020List = new Res4020List();
+			res4020List.setReplyNo(list.getReplyNo());
+			res4020List.setBoardNo(list.getBoardNo());
+			res4020List.setReplyGroup(list.getReplyGroup());
+			res4020List.setContent(list.getContent());
+			res4020List.setUseYn(list.getUseYn());
+			response.addList(res4020List);
+		}
+		
+		return new ResponseEntity<Res4020>(response, HttpStatus.OK);
+	}
+
 //	@ApiOperation(value = "댓글 목록")
-//	@GetMapping(value="/4020")
-//	public ResponseEntity<Res4020> reply(){
+//	@PostMapping(value="/4020")
+//	public ResponseEntity<Res4020> reply(@RequestBody Request4020 req){
 //		Res4020 response = new Res4020();
-////		Res4020List res4020List = new Res4020List();
-//		List<ReplyVo> relpyVo = boardService1.findByreplyList();
+//
+//
+//		System.out.println("==================");
+//		System.out.println("MyName : " + req.getMyName());
+//		System.out.println("MyEmail : " + req.getMyEmail());
+//		System.out.println("==================");
 //		
-//		for(ReplyVo list : relpyVo) {
-//			Res4020List res4020List = new Res4020List();
-//			res4020List.setReplyNo(list.getReplyNo());
-//			res4020List.setBoardNo(list.getBoardNo());
-//			res4020List.setReplyGroup(list.getReplyGroup());
-//			res4020List.setContent(list.getContent());
-//			res4020List.setUseYn(list.getUseYn());
-//			response.addList(res4020List);
-//		}
 //		
 //		return new ResponseEntity<Res4020>(response, HttpStatus.OK);
 //	}
-
-	@ApiOperation(value = "댓글 목록")
-	@PostMapping(value="/4020")
-	public ResponseEntity<Res4020> reply(@RequestBody Request4020 req){
+	
+	@ApiOperation(value = "댓글 작성")
+	@PostMapping(value="/4021")
+	public ResponseEntity<Res4020> replyInsert(@RequestBody Req4020 req4020){
 		Res4020 response = new Res4020();
-
-
+		System.out.println(req4020.getContent());
+		boardServiceImpl1.replyInsert(req4020);
 		System.out.println("==================");
-		System.out.println("MyName : " + req.getMyName());
-		System.out.println("MyEmail : " + req.getMyEmail());
+		System.out.println(req4020.getReplyNo());
 		System.out.println("==================");
-		
-		
 		return new ResponseEntity<Res4020>(response, HttpStatus.OK);
 	}
 	

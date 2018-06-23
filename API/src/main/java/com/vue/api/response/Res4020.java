@@ -3,10 +3,12 @@ package com.vue.api.response;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.vue.api.response.common.ResCommon;
+
 import lombok.Data;
 
 @Data
-public class Res4020 {
+public class Res4020 extends ResCommon {
 
 	private List<Res4020List> replyList;
 	
