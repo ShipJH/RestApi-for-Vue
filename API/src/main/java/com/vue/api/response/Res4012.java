@@ -24,4 +24,10 @@ public class Res4012 extends ResResult{
 	
 	@ApiModelProperty(value = "게시판 댓글 수", dataType = "int", position=5)
 	private int replyCnt;
+	
+	@ApiModelProperty(value = "작성자", dataType = "String", position=6)
+	private String regUser;
+	
+	@ApiModelProperty(value = "작성일자", dataType = "String", position=7)
+	private String regDate;
 }

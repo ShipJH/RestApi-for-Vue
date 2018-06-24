@@ -18,4 +18,9 @@ public class Res4010List {
 	@ApiModelProperty(value = "게시판 댓글 수", dataType = "int", position=3)
 	private int replyCnt;
 	
+	@ApiModelProperty(value = "작성자", dataType = "String", position=4)
+	private String regUser;
+	
+	@ApiModelProperty(value = "작성일자", dataType = "String", position=5)
+	private String regDate;
 }
