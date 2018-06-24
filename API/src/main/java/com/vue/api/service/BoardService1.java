@@ -8,7 +8,7 @@ import com.vue.api.vo.boardVo.ReplyVo;
 
 public interface BoardService1 {
 	
-	List<ReplyVo> findByreplyList();
+	List<ReplyVo> findByreplyList(int boardNo);
 	int replyInsert(Req4020 req4020);
 	BoardVo boardDetail(int boardNo);
 

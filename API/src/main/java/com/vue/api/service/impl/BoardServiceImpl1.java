@@ -18,8 +18,8 @@ public class BoardServiceImpl1 implements BoardService1 {
 	private BoardMapper1 boardMapper;
 	
 	@Override
-	public List<ReplyVo> findByreplyList() {
-		return boardMapper.findByreplyList();
+	public List<ReplyVo> findByreplyList(int boardNo) {
+		return boardMapper.findByreplyList(boardNo);
 	}
 
 	@Override

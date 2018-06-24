@@ -14,8 +14,11 @@ import com.vue.api.vo.boardVo.ReplyVo;
 @Mapper
 public interface BoardMapper1 {
 
-	@Select("SELECT * FROM REPLY ORDER BY IF(ISNULL(REPLY_GROUP),REPLY_NO, REPLY_GROUP),REPLY_NO")
-	List<ReplyVo> findByreplyList();
+	@Select("SELECT * "
+			+ "FROM REPLY "
+			+ "WHERE BOARD_NO=#{boardNo} "
+			+ "ORDER BY IF(ISNULL(REPLY_GROUP),REPLY_NO, REPLY_GROUP),REPLY_NO")
+	List<ReplyVo> findByreplyList(int boardNo);
 	
 	@Insert("INSERT INTO REPLY "
 			+ "(BOARD_NO, CONTENT, REPLY_GROUP, USE_YN, REG_USER) "

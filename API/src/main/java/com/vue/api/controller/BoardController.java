@@ -70,11 +70,11 @@ public class BoardController {
 	}
 	
 	@ApiOperation(value = "댓글 목록")
-	@GetMapping(value="/4020")
-	public ResponseEntity<Res4020> reply(){
+	@GetMapping(value="/4020/{boardNo}")
+	public ResponseEntity<Res4020> reply(@PathVariable int boardNo){
 		Res4020 response = new Res4020();
 //		Res4020List res4020List = new Res4020List();
-		List<ReplyVo> relpyVo = boardServiceImpl1.findByreplyList();
+		List<ReplyVo> relpyVo = boardServiceImpl1.findByreplyList(boardNo);
 		
 		for(ReplyVo list : relpyVo) {
 			Res4020List res4020List = new Res4020List();
