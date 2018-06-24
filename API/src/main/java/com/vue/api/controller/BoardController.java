@@ -1,25 +1,26 @@
 package com.vue.api.controller;
 
-import java.time.format.DateTimeFormatter;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vue.api.request.Req4020;
-import com.vue.api.request.Request4020;
 import com.vue.api.response.Res4010;
 import com.vue.api.response.Res4010List;
+import com.vue.api.response.Res4012;
 import com.vue.api.response.Res4020;
 import com.vue.api.response.Res4020List;
-import com.vue.api.service.BoardService1;
 import com.vue.api.service.impl.BoardServiceImpl;
 import com.vue.api.service.impl.BoardServiceImpl1;
 import com.vue.api.util.DateUtil;
@@ -115,4 +116,26 @@ public class BoardController {
 		return new ResponseEntity<Res4020>(response, HttpStatus.OK);
 	}
 	
+	@ApiOperation(value = "게시글 상세 페이지")
+	@GetMapping(value="/4012/{boardNo}")
+	public ResponseEntity<Res4012> boardDetail(@PathVariable int boardNo){
+		/*String boardNo=req.getParameter("boardNo");
+		*/
+		System.out.println("==================");
+		System.out.println(boardNo);
+		System.out.println("==================");
+		
+		Res4012 response = new Res4012();
+		BoardVo boardVo = boardServiceImpl1.boardDetail(boardNo);
+		
+		response.setBoardNo(boardVo.getBoardNo());
+		response.setTitle(boardVo.getTitle());
+		response.setUseYn(boardVo.getUseYn());
+		response.setRegUser(boardVo.getRegUser());
+		response.setRegDate(DateUtil.localDateTimeToStrDetail(boardVo.getRegDate()));
+		response.setReplyCnt(boardVo.getReplyCnt());
+
+
+		return new ResponseEntity<Res4012>(response, HttpStatus.OK);
+	}
 }

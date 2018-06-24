@@ -16,6 +16,8 @@ public class Res4010 extends ResResult {
 	@ApiModelProperty(value = "게시판 목록 리스트", dataType = "list", position=1)
 	private List<Res4010List> boardList;
 	
+	private Res4010List boardDetail;
+	
 	public void addList(Res4010List res4010List) {
 		if(boardList == null) {
 			boardList = new ArrayList<>();

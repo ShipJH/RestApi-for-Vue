@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.vue.api.mapper.BoardMapper1;
 import com.vue.api.request.Req4020;
 import com.vue.api.service.BoardService1;
+import com.vue.api.vo.boardVo.BoardVo;
 import com.vue.api.vo.boardVo.ReplyVo;
 
 @Service
@@ -26,5 +27,12 @@ public class BoardServiceImpl1 implements BoardService1 {
 		return boardMapper.replyInsert(req4020);
 	}
 
+	@Override
+	public BoardVo boardDetail(int boardNo) {
+		return boardMapper.boardDetail(boardNo);
+	}
+
+	
+	
 	
 }

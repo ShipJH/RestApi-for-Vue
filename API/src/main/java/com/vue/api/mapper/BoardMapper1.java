@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 
 import com.vue.api.request.Req4020;
+import com.vue.api.vo.boardVo.BoardVo;
 import com.vue.api.vo.boardVo.ReplyVo;
 
 @Mapper
@@ -22,4 +23,7 @@ public interface BoardMapper1 {
 			+ "('1',#{content},null,'Y','1')")
 	@Options(useGeneratedKeys = true, keyProperty = "replyNo")
 	int replyInsert(Req4020 req4020);
+	
+	@Select("SELECT * FROM BOARD WHERE BOARD_NO = #{boardNo}")
+	BoardVo boardDetail(int boardNo);
 }
