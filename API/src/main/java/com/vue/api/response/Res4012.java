@@ -1,6 +1,6 @@
 package com.vue.api.response;
 
-import com.vue.api.response.common.ResCommon;
+import com.vue.api.response.common.ResResult;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -8,7 +8,7 @@ import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class Res4012 extends ResCommon{
+public class Res4012 extends ResResult{
 	
 	@ApiModelProperty(value = "게시글 번호 ", dataType = "int", position=1)
 	private int boardNo;

@@ -3,12 +3,14 @@ package com.vue.api.response;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.vue.api.response.common.ResCommon;
+import com.vue.api.response.common.ResResult;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
-public class Res4020 extends ResCommon {
+@EqualsAndHashCode(callSuper = true)
+public class Res4020 extends ResResult {
 
 	private List<Res4020List> replyList;
 	
