@@ -23,7 +23,7 @@ public interface BoardMapper1 {
 	@Insert("INSERT INTO REPLY "
 			+ "(BOARD_NO, CONTENT, REPLY_GROUP, USE_YN, REG_USER) "
 			+ "VALUES"
-			+ "('1',#{content},null,'Y','1')")
+			+ "(#{boardNo},#{content},null,'Y','1')")
 	@Options(useGeneratedKeys = true, keyProperty = "replyNo")
 	int replyInsert(Req4020 req4020);
 	
