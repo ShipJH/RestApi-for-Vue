@@ -1,4 +1,4 @@
-package com.vue.api.vo.comVo;
+package com.vue.api.vo;
 
 import java.time.LocalDateTime;
 

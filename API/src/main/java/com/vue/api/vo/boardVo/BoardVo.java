@@ -1,6 +1,6 @@
 package com.vue.api.vo.boardVo;
 
-import com.vue.api.vo.comVo.CommonVo;
+import com.vue.api.vo.CommonVo;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
