@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+/** 댓글 목록 listVo(4020) */
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class Res4020List extends ResResult{

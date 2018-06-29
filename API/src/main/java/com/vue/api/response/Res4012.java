@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+/** 게시글 상세 페이지 vo (4012) */
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class Res4012 extends ResResult{

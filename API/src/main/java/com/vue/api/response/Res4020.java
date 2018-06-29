@@ -8,6 +8,7 @@ import com.vue.api.response.common.ResResult;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+/** 댓글 목록 vo(4020) */
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class Res4020 extends ResResult {

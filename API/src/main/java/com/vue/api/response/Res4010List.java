@@ -3,6 +3,7 @@ package com.vue.api.response;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+/** 게시판 목록보기 ListVo (4010) */
 @Data
 public class Res4010List {
 	
