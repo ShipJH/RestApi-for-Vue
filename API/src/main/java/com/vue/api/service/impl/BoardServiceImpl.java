@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.vue.api.mapper.BoardMapper;
+import com.vue.api.request.Req4020;
 import com.vue.api.request.Req4021;
 import com.vue.api.response.Res4010;
 import com.vue.api.response.Res4010List;
@@ -16,6 +17,7 @@ import com.vue.api.response.Res4020List;
 import com.vue.api.response.Res4021;
 import com.vue.api.service.BoardService;
 import com.vue.api.util.DateUtil;
+import com.vue.api.util.PageUtil;
 import com.vue.api.util.commonCode.MsgEnum;
 import com.vue.api.vo.boardVo.BoardVo;
 import com.vue.api.vo.boardVo.ReplyVo;
@@ -26,12 +28,14 @@ public class BoardServiceImpl implements BoardService{
 	@Autowired
 	private BoardMapper boardMapper;
 	
-	/** 게시판 목록보기 (4010) */
+	/** 게시판 목록보기 (4010) 
+	 * @param pageInfo 
+	 * @param request */
 	@Override
-	public Res4010 findByBoardList() {
+	public Res4010 findByBoardList(Req4020 request, PageUtil pageSetting) {
 		
 		Res4010 response = new Res4010();
-		List<BoardVo> boardVo = boardMapper.findByBoardList();
+		List<BoardVo> boardVo = boardMapper.findByBoardList(request,pageSetting);
 		for(BoardVo list : boardVo) {
 			Res4010List res4010List = new Res4010List(); 
 			res4010List.setBoardNo(list.getBoardNo());

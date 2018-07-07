@@ -1,16 +1,18 @@
 package com.vue.api.service;
 
+import com.vue.api.request.Req4020;
 import com.vue.api.request.Req4021;
 import com.vue.api.response.Res4010;
 import com.vue.api.response.Res4012;
 import com.vue.api.response.Res4020;
 import com.vue.api.response.Res4021;
+import com.vue.api.util.PageUtil;
 
 
 public interface BoardService {
 
 	/** 게시판 목록보기 (4010) */
-	Res4010 findByBoardList();
+	Res4010 findByBoardList(Req4020 request, PageUtil pageSetting);
 
 	/** 게시글 상세보기 (4012) */
 	Res4012 findByBoardDetail(int boardNo);

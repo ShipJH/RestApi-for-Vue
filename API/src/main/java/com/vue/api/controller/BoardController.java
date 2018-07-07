@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.vue.api.request.Req4020;
 import com.vue.api.request.Req4021;
 import com.vue.api.response.Res4010;
 import com.vue.api.response.Res4012;
@@ -18,6 +19,8 @@ import com.vue.api.response.Res4020;
 import com.vue.api.response.Res4021;
 import com.vue.api.service.impl.BoardServiceImpl;
 import com.vue.api.service.impl.spareServiceImpl;
+import com.vue.api.util.PageUtil;
+import com.vue.api.util.commonCode.Code;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -33,9 +36,14 @@ public class BoardController {
 	private BoardServiceImpl boardServiceImpl;
 
 	@ApiOperation(value = "게시판 목록보기")
-	@GetMapping(value="/4010")
-	public ResponseEntity<Res4010> findByBoardList(){
-		Res4010 response = boardServiceImpl.findByBoardList();
+	@GetMapping(value="/4010/{category}/{input}/{pageNo}")
+	public ResponseEntity<Res4010> findByBoardList(@PathVariable String category, @PathVariable String input, @PathVariable int pageNo){
+		PageUtil pageSetting = new PageUtil(pageNo, Code.BOARD_INCREMENT);
+		Req4020 request = new Req4020();
+		request.setCategory(category);
+		request.setInput(input);
+		request.setPageNo(pageNo);
+		Res4010 response = boardServiceImpl.findByBoardList(request,pageSetting);
 		return new ResponseEntity<Res4010>(response, HttpStatus.OK);
 	}
 	
