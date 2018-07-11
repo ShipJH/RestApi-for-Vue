@@ -25,8 +25,24 @@ public interface BoardMapper {
 	@SelectProvider(type=ProviderBoardMapper.class, method="findByBoardList")
 	List<BoardVo> findByBoardList(@Param("req") Req4020 request, @Param("page") PageUtil pageSetting);
 
+	/** 게시판 목록보기 (4010) > 페이징처리를 위한 게시글 카운트 
+	 * @param pageInfo 
+	 * @param request */
+	@SelectProvider(type=ProviderBoardMapper.class, method="findByBoardListCnt")
+	int findByBoardListCnt(@Param("req") Req4020 request);
+	
+	
+	/** 
+	 * provider 를 위한 클래스(innerClass) 
+	 * @author ShipJH
+	 */
 	class ProviderBoardMapper{
-		
+		/**
+		 * 게시판 목록보기 (4010) 
+		 * @param request
+		 * @param pageSetting
+		 * @return
+		 */
 		public String findByBoardList(@Param("req") Req4020 request, @Param("page") PageUtil pageSetting) {
 			return new SQL() {
 				{
@@ -54,6 +70,36 @@ public interface BoardMapper {
 				}
 			}.toString();
 		}
+		
+		
+		
+		
+		/**
+		 * //게시판 목록보기 (4010) > 페이징처리를 위한 게시글 카운트
+		 * @param request
+		 * @param pageSetting
+		 * @return
+		 */
+		public String findByBoardListCnt(@Param("req") Req4020 request) {
+			return new SQL() {
+				{
+					SELECT(" COUNT(1) "  );
+					FROM( " BOARD ");
+					WHERE(" 1=1 ");
+					if("01".equals(request.getCategory())) {
+						AND();
+					  WHERE(" TITLE LIKE CONCAT('%', #{req.input}, '%') ");
+					}else if("02".equals(request.getCategory())) {
+						AND();
+						WHERE(" TITLE LIKE CONCAT('%', #{req.input}, '%') ");
+					}
+							
+				}
+			}.toString();
+		}
+		
+		
+		
 	}
 	
 	
@@ -75,4 +121,6 @@ public interface BoardMapper {
 			+ "(#{boardNo},#{content},null,'Y','1')")
 	@Options(useGeneratedKeys = true, keyProperty = "replyNo")
 	int replyInsert(Req4021 req4021);
+
+	
 }

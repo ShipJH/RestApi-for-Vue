@@ -14,7 +14,13 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public class Res4010 extends ResResult {
 	
-	@ApiModelProperty(value = "게시판 목록 리스트", dataType = "list", position=1)
+	@ApiModelProperty(value = "총 게시글 수", dataType = "int", position=0)
+	private int listCnt; 
+	
+	@ApiModelProperty(value = "요청 페이지 번호", dataType = "int", position=1)
+	private int pageNo;
+	
+	@ApiModelProperty(value = "게시판 목록 리스트", dataType = "list", position=2)
 	private List<Res4010List> boardList;
 	
 	public void addList(Res4010List res4010List) {

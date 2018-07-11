@@ -47,6 +47,9 @@ public class BoardServiceImpl implements BoardService{
 			response.addList(res4010List);
 		}
 		
+		response.setListCnt(boardMapper.findByBoardListCnt(request));
+		response.setPageNo(request.getPageNo());
+		
 		response.setResResult(MsgEnum.SUCCESS.getCode());
 		response.setResMsg(MsgEnum.SUCCESS.getMsg());
 		response.setResDate(DateUtil.toCurrentDefaultDateString());
