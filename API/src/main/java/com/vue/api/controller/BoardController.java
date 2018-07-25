@@ -18,7 +18,6 @@ import com.vue.api.response.Res4012;
 import com.vue.api.response.Res4020;
 import com.vue.api.response.Res4021;
 import com.vue.api.service.impl.BoardServiceImpl;
-import com.vue.api.service.impl.spareServiceImpl;
 import com.vue.api.util.PageUtil;
 import com.vue.api.util.commonCode.Code;
 
