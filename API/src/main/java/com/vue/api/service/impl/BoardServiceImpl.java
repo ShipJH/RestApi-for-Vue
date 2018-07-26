@@ -40,6 +40,7 @@ public class BoardServiceImpl implements BoardService{
 			Res4010List res4010List = new Res4010List(); 
 			res4010List.setBoardNo(list.getBoardNo());
 			res4010List.setTitle(list.getTitle());
+			//TODO: UseYn 까지 갖고올 수 있도록 쿼리 변경요망
 			res4010List.setUseYn(list.getUseYn());
 			res4010List.setRegUser(list.getRegUser());
 			res4010List.setRegDate(DateUtil.localDateTimeToStrDetail(list.getRegDate()));
