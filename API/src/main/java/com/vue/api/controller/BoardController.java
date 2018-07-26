@@ -35,13 +35,13 @@ public class BoardController {
 	private BoardServiceImpl boardServiceImpl;
 
 	@ApiOperation(value = "게시판 목록보기")
-	@GetMapping(value="/4010/{category}/{input}/{pageNo}")
-	public ResponseEntity<Res4010> findByBoardList(@PathVariable String category, @PathVariable String input, @PathVariable int pageNo){
+	@GetMapping(value="/4010/{category}/{pageNo}/{input}")
+	public ResponseEntity<Res4010> findByBoardList(@PathVariable String category,  @PathVariable int pageNo, @PathVariable String input){
 		PageUtil pageSetting = new PageUtil(pageNo, Code.BOARD_INCREMENT);
 		Req4020 request = new Req4020();
 		request.setCategory(category);
-		request.setInput(input);
 		request.setPageNo(pageNo);
+		request.setInput(input);
 		Res4010 response = boardServiceImpl.findByBoardList(request,pageSetting);
 		return new ResponseEntity<Res4010>(response, HttpStatus.OK);
 	}
