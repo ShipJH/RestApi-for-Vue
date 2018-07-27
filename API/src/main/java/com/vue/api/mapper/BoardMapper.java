@@ -65,7 +65,7 @@ public interface BoardMapper {
 							+" ,A.TITLE "
 							+" ,A.REG_DATE "
 							+" ,A.REG_USER " );
-					ORDER_BY("  A.REG_DATE DESC "
+					ORDER_BY("  A.BOARD_NO DESC "
 							+ " LIMIT #{page.limit}, #{page.increment} ");
 				}
 			}.toString();
