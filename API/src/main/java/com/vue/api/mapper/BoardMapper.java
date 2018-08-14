@@ -3,6 +3,7 @@ package com.vue.api.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.InsertProvider;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
@@ -119,8 +120,24 @@ public interface BoardMapper {
 			+ "(BOARD_NO, CONTENT, REPLY_GROUP, USE_YN, REG_USER) "
 			+ "VALUES"
 			+ "(#{boardNo},#{content},null,'Y','1')")
+//	@InsertProvider(type=ProviderReplyMapper.class, method="replyInsert")
 	@Options(useGeneratedKeys = true, keyProperty = "replyNo")
 	int replyInsert(Req4021 req4021);
+	
+//	class ProviderReplyMapper{
+//		
+//		public String replyInsert(@Param("replyGroup") int replyGroup) {
+//			return new SQL() {
+//				{
+//					INSERT_INTO("REPLY");
+//					VALUES("BOARD_NO, REPLY_GROUP, USE_YN, REG_USER",
+//							"#{boardNo},#{content},null,'Y','1'");
+//				}
+//				
+//			}.toString();
+//		}
+//		
+//	}
 
 	
 }

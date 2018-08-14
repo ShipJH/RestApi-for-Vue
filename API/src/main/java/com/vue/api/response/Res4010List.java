@@ -24,4 +24,5 @@ public class Res4010List {
 	
 	@ApiModelProperty(value = "작성일자", dataType = "String", position=5)
 	private String regDate;
+
 }

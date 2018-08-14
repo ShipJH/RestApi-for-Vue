@@ -6,6 +6,7 @@ import com.vue.api.response.common.ResResult;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Setter;
 
 /** 댓글 목록 listVo(4020) */
 @Data
@@ -26,5 +27,8 @@ public class Res4020List extends ResResult{
 
 	@ApiModelProperty(value="댓글 상태", dataType="String")
 	private String useYn;
+	
+	@Setter
+	private Boolean isReInsert = false;
 
 }
