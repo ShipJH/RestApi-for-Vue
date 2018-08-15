@@ -116,28 +116,42 @@ public interface BoardMapper {
 	List<ReplyVo> findByreplyList(int boardNo);
 	
 	/** 댓글 작성 (4021) */
-	@Insert("INSERT INTO REPLY "
+	/*@Insert("INSERT INTO REPLY "
 			+ "(BOARD_NO, CONTENT, REPLY_GROUP, USE_YN, REG_USER) "
 			+ "VALUES"
-			+ "(#{boardNo},#{content},null,'Y','1')")
-//	@InsertProvider(type=ProviderReplyMapper.class, method="replyInsert")
+			+ "(#{boardNo},#{content},null,'Y','1')")*/
+	@InsertProvider(type=ProviderReplyMapper.class, method="replyInsert")
 	@Options(useGeneratedKeys = true, keyProperty = "replyNo")
 	int replyInsert(Req4021 req4021);
 	
-//	class ProviderReplyMapper{
-//		
-//		public String replyInsert(@Param("replyGroup") int replyGroup) {
-//			return new SQL() {
-//				{
-//					INSERT_INTO("REPLY");
-//					VALUES("BOARD_NO, REPLY_GROUP, USE_YN, REG_USER",
-//							"#{boardNo},#{content},null,'Y','1'");
-//				}
-//				
-//			}.toString();
-//		}
-//		
-//	}
+	class ProviderReplyMapper{
+		
+		public String replyInsert(Req4021 req4021) {
+			
+			StringBuilder query = new StringBuilder();
+			
+			query.append("INSERT INTO REPLY");
+			query.append("(BOARD_NO,");
+			query.append(" CONTENT,");
+			query.append(" REPLY_GROUP,");
+			query.append(" USE_YN,");
+			query.append(" REG_USER)");
+			query.append(" VALUES");
+			query.append(" (#{boardNo},");
+			query.append(" #{content},");
+			if (req4021.getReplyNo() == 0) {
+				query.append(" null,");
+			}else {
+				query.append(" #{replyNo},");
+			}
+			query.append(" 'Y',");
+			query.append(" '1')");
+			
+			return query.toString();
+			
+		}
+		
+	}
 
 	
 }

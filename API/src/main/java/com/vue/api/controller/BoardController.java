@@ -60,12 +60,21 @@ public class BoardController {
 		return new ResponseEntity<Res4020>(response, HttpStatus.OK);
 	}
 	
+/*	@ApiOperation(value = "댓글 작성")
+	@PostMapping(value="/4021/{replyNo}")
+	public ResponseEntity<Res4021> replyInsert(@RequestBody Req4021 req4021,@PathVariable int replyNo){
+		req4021.setReplyGroup(replyNo);
+		Res4021 response = boardServiceImpl.replyInsert(req4021);
+		return new ResponseEntity<Res4021>(response, HttpStatus.OK);
+	}*/
+	
 	@ApiOperation(value = "댓글 작성")
-	@PostMapping(value="/4021")
+	@PostMapping(value="/4021/")
 	public ResponseEntity<Res4021> replyInsert(@RequestBody Req4021 req4021){
+		System.out.println(req4021.getBoardNo());
+		System.out.println(req4021.getContent());
+		System.out.println(req4021.getReplyNo());
 		Res4021 response = boardServiceImpl.replyInsert(req4021);
 		return new ResponseEntity<Res4021>(response, HttpStatus.OK);
 	}
-	
-	
 }
