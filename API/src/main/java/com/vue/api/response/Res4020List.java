@@ -29,7 +29,7 @@ public class Res4020List extends ResResult{
 	private String useYn;
 	
 	@Setter
-	@ApiModelProperty(value="댓글 입력폼 초기상태", dataType="Boolean")
+	@ApiModelProperty(value="댓글 입력폼 초기상태 ( default : false )", dataType="Boolean")
 	private Boolean isReInsert = false;
 
 }
