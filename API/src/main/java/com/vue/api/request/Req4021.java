@@ -16,4 +16,7 @@ public class Req4021 {
 	@ApiModelProperty(value="댓글내용", dataType="String", required=true)
 	private String content;
 
+	@ApiModelProperty(value="댓글 그룹번호", dataType="int")
+	private int replyGroup;
+
 }

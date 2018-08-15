@@ -139,10 +139,12 @@ public interface BoardMapper {
 			query.append(" VALUES");
 			query.append(" (#{boardNo},");
 			query.append(" #{content},");
-			if (req4021.getReplyNo() == 0) {
+			if (req4021.getReplyNo() == 0 && req4021.getReplyGroup() == 0) {
 				query.append(" null,");
-			}else {
+			}else if(req4021.getReplyNo() != 0 && req4021.getReplyGroup() == 0){
 				query.append(" #{replyNo},");
+			}else if(req4021.getReplyNo() != 0 && req4021.getReplyGroup() != 0) {
+				query.append(" #{replyGroup},");
 			}
 			query.append(" 'Y',");
 			query.append(" '1')");
